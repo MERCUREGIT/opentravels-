@@ -1,0 +1,25 @@
+{% load static %} {% block trip_cards %}
+<!-- <div id="join_trip_heading_text">
+    <H1>Your Planned Trips</H1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus suscipit rerum vero ipsum laboriosam nihil culpa pariatur praesentium velit odit ullam cum magni excepturi cupiditate dolorem perferendis, id voluptates eveniet blanditiis magnam illo
+        veniam. Labore reiciendis adipisci sed aspernatur nisi repellendus cumque doloribus, a delectus. Quae autem maiores quisquam nisi!</p>
+</div> -->
+<section id="trip_section">
+
+    {% for trip in trips %}
+    <div id="trip_card">
+        <img id="trip_image" src="{{ trip.thumb.url }}" alt="trip featuure image">
+        <!-- <img id="user_image" src="{% static 'trip_manager/card_images.png' %}" alt="trip featuure image"> -->
+        <div><i class="fa fa-clock-o" aria-hidden="true"></i>{{trip.Time}}<i class="fa fa-calendar" aria-hidden="true"></i>{{trip.Date}}</div>
+        <div> <i class="fa fa-car" aria-hidden="true"></i>{{trip.agency}} </div>
+        <div><i class="fa fa-hourglass-half" aria-hidden="true"></i>Time left</div>
+        <a href="{% url 'trip_manager:join_trip' abc=trip.id %}"> <i class="fa fa-plus-circle" aria-hidden="true"></i>join Trip</a>
+        <a href="{% url 'trip_manager:trip_details_page' abc=trip.id %}"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+        <a href="{% url 'trip_manager:make_trip_public' abc=trip.id %}"><i class="fa fa-eye" aria-hidden="true"></i> Publish Trip</a>
+    </div>
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+ {%extends './base.html'%} {% load static %}
+<h1>hello world</h1>
+<!-- includind trip cards -->
+{% block trip_cards %} {%include './trip_cards.html'%} {% endblock %}
+<!-- including for used to post trip -->
+{% block trip_post_form %}{%include './trip_post_form.html'%} {% endblock %}
+
+<!-- including trip asside -->
+{% block actual_trip %}{%include './actual_trip.html'%}{% endblock %}

@@ -1,0 +1,56 @@
+ {% extends './base.html' %} {% block trip_details %}
+
+<section class="trip_details">
+
+    <!-- single view trip details -->
+    <div id="trip_details_text">
+        <span><i class="fa fa-users" aria-hidden="true"></i>@_{{trip_detail.author }}</span>
+        <p>Posted a trip and will traveling from</p> {{trip_detail.origin}}
+        <p>to</p>
+        {{trip_detail.destination}}
+        <p>at</p>
+        <span>
+            <i class="fa fa-calendar" aria-hidden="true"></i>{{trip_detail.Date}} 
+            <i class="fa fa-clock-o" aria-hidden="true"></i>{{trip_detail.Time}} 
+        </span>
+    </div>
+    <!-- trip feature image -->
+    <div>
+        <img src="{{ trip_detail.thumb.url }}" alt="">
+    </div>
+
+    <!-- actual user comments -->
+    <div class="comment_trip_text_details">
+        <div>
+            {% for comment in comments %}
+            <!-- checking that the trip id corresponds to the comment trip id -->
+            {% if comment.trip_data_id == trip_detail.id %}
+
+            <h3 style="text-transform:capitalize;">
+                {{ comment.commenting_user }}
+            </h3>
+            <p>
+                {{comment.description}}
+            </p>
+
+            {% endif %} {% endfor %}
+        </div>
+    </div>
+
+</section>
+
+<section id="trip_section_card_details">
+    {% for trip in trips %}{% if trip.is_public == True %}
+    <div id="trip_card_details">
+        <img id="trip_image" src="{{ trip.thumb.url }}" alt="trip featuure image">
+        <div><i class="fa fa-clock-o" aria-hidden="true"></i>{{trip.Time}}<i class="fa fa-calendar" aria-hidden="true"></i>{{trip.Date}}</div>
+        <div style="margin-top: 20px;"><span> <i class="fa fa-car" aria-hidden="true"></i>{{trip.agency}}  <i class="fa fa-hourglass-half" aria-hidden="true"></i>Time left</span></div>
+        <a href="{% url 'trip_manager:join_trip' abc=trip.id %}"> <i class="fa fa-plus-circle" aria-hidden="true"></i>join Trip</a>
+        <a href="{% url 'trip_manager:trip_details_page' abc=trip.id %}"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+    </div>
+    </div>
+    {% endif %} {% endfor %}
+
+</section>
+
+{% endblock %}

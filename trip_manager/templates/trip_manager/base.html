@@ -1,0 +1,69 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trips</title>
+    <link rel="stylesheet" href="{% static 'trip_manager/style.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/4deffcab94.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="main_navigation">
+        <div>
+            <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+            <input type="text" name="search" id="search_box" placeholder="seach for a trip" />
+        </div>
+        <ul>
+            <li>
+                <a href="#"> <i class="fa fa-home" aria-hidden="true"></i>Home</a>
+            </li>
+            <li><a href="{% url 'trip_manager:trip_page' %}"><i class="fas fa-plane-departure"></i>Trips</a></li>
+            <li><a href=""><i class="fas fa-layer-group"></i>Groups</a></li>
+            <li><a href=""><i class="fas fa-praying-hands"></i>Relationship manager</a></li>
+            <li><a href=""><i class="fas fa-user-circle fa-2x"></i></a></li>
+        </ul>
+    </nav>
+    <div id="display_trip_form">
+        <button onclick="display_form()" ondblclick="display_form_hide()" id="display_trip"> <i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>Display Trip</button>
+    </div>
+    {% block trip_cards %} {% endblock %} {% block trip_post_form %} {% endblock %}{% block actual_trip %}{% endblock %} {% block trip_details %}{% endblock %}
+    <!-- footer -->
+    <footer>
+
+    </footer>
+
+    <!-- scripts -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="{%static 'trip_manager/main.js'%}"></script>
+
+    <!-- implement the trip seach functionality -->
+    <script>
+        $("#search_box").change(function() {
+            console.log($(this).val());
+        });
+
+
+        function display_form() {
+
+            form_button = document.getElementById('display_trip');
+            var click = true;
+            if (click == true) {
+                form = document.getElementById('trip_post_form').style.display = "block";
+                click = false;
+            }
+        }
+
+        function display_form_hide() {
+            form = document.getElementById('trip_post_form').style.display = "none";
+
+        }
+    </script>
+
+</body>
+
+</html>

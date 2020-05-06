@@ -1,0 +1,21 @@
+{% block trip_post_form %}
+
+
+<div id="form">
+    <h1>Post A Trip</h1>
+    <section id="trip_post_form">
+
+        <form id="post_form" action="{% url 'trip_manager:trip_page' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %} {{form}}
+            <!-- <div id="file">
+                <input type="file" accept="image/*" class="custom-file-input" size="60" id="">
+            </div> -->
+            <!-- <input type="file" accept="image/*" class="custom-file-input" size="60" id=""> -->
+
+            <input type="submit" id="submit" name="" value="Create Trip">
+        </form>
+
+    </section>
+</div>
+
+{% endblock %}

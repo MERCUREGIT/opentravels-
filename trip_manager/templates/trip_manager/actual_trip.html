@@ -1,0 +1,99 @@
+{% load static %} {% block actual_trip %}
+
+<section id="actual_trip">
+
+    <div>
+
+        <h1>joint trips</h1>
+
+        {% for trip_joint in trip_joint_by_user_all %}
+        <div>
+            <span>origin  : {{trip_joint.joinin_user}}</span><br>
+            <span>Destination  :{{trip_joint.trip_data_id}}</span>
+            <!-- <p>{{trip.description }}</p>
+            <span>origin  : {{trip.origin}}</span><br>
+            <span>Destination  :{{trip.destination}}</span>
+            <p>{{trip.description }}</p> -->
+
+
+            <span><i class="fa fa-users" aria-hidden="true"></i>{{trip.author }}</span>
+        </div>
+        {%endfor%}
+
+    </div>
+    <div>
+        <h1>Trip Groups</h1>
+        <div>
+            <img src="{{ trip_detail.thumb.url }}" alt="">
+        </div>
+        <span>origin  : {{trip_detail.origin}}</span><br>
+        <span>Destination  :{{trip_detail.destination}}</span>
+        <p>{{trip_detail.description }}</p>
+        <span>{{trip_detail.author }}</span>
+        <span><i class="fa fa-users" aria-hidden="true"></i>{{trip_detail.author }}</span>
+    </div>
+
+</section>
+
+
+<!-- public trip post list form -->
+<section id="trip_list">
+
+    {% for trip in trips %} {% if trip.is_public == True %}
+    <h1 style="color: aliceblue;"> {{trip.getNumberOfComments }}</h1>
+    <div id="trip_list_item">
+        <div id="trip_user_post">
+            @_{{trip.author }}
+            <p>Posted a trip and will traveling from</p> {{trip.origin}}
+            <p>to</p>
+            {{trip.destination}}
+            <p>at</p>
+            <span>
+                <i class="fa fa-calendar" aria-hidden="true"></i>{{trip.Date}} 
+                <i class="fa fa-clock-o" aria-hidden="true"></i>{{trip.Time}} 
+            </span>
+        </div>
+        <!-- feature image -->
+        <img id="trip_user_image" src="{{ trip.thumb.url }}" alt="trip post user image">
+        <div id="trip_desription">{{trip.presentDescription}}</div>
+        <img id="trip_feature_image" src="{{ trip.thumb.url }}" alt="trip feature image">
+        <div class="upper_trip_list_nav" style="margin:12.5px 0px 12.5px 0px;">
+            <a href=""><i class="fa fa-thumbs-up" aria-hidden="true"></i>Like</a>
+            <a href="{%  url 'trip_manager:comment_trip' abc=trip.id %}"><i class="fa fa-comments" aria-hidden="true"></i> comments</a>
+            <a href="#"><i class="fa fa-users" aria-hidden="true"></i>Trip Group</a>
+        </div>
+        <hr>
+        <div style="margin:12.5px 0px 12.5px 0px;" class="lower_trip_list_nav"> <i class="fa fa-car" aria-hidden="true"></i>{{trip.agency}}<i class="fa fa-hourglass-half" aria-hidden="true"></i>Time left
+            <a href="{% url 'trip_manager:join_trip' abc=trip.id %}"> <i class="fa fa-plus-circle" aria-hidden="true"></i>join Trip</a>
+            <a href="{% url 'trip_manager:trip_details_page' abc=trip.id %}"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+        </div>
+        <hr>
+        <br>
+        <div class="comment_trip">
+            <!-- actual user comments -->
+            {% for comment in comments %}
+            <!-- checking that the trip id corresponds to the comment trip id -->
+            {% if comment.trip_data_id == trip.id %}
+            <div class="comment_trip_text">
+                <h3 style="text-transform:capitalize;">
+                    {{ comment.commenting_user }}
+                </h3>
+                <p>
+                    {{comment.description}}
+                </p>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+        <!-- post comment form -->
+        <div id="comments_input">
+            <form action="{% url 'trip_manager:comment_trip' abc=trip.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" name="comment" id="filed" placeholder="  Speak out your mind about this trip">
+                <!-- <span> <i class="fa fa-comments" aria-hidden="true"></i> <input type="file" name="image" id="fileToUpload"> </span> -->
+                <button type="submit"><i class="fa fa-comments s" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+    {% endif %} {% endfor %}
+</section>
+{% endblock %}
