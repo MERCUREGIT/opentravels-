@@ -251,8 +251,7 @@ h1 {
     padding: 0;
     z-index: 2;
     top: 200px;
-    background-color: red;
-    display: none;
+    /* background-color: red; */
     align-items: center;
     box-sizing: border-box;
     border-radius: 10px 0px 0px 10px;
@@ -264,7 +263,7 @@ h1 {
     margin: 10px 0 10px 10px;
     height: 40px;
     border-radius: 10px;
-    border: rgba(255, 255, 0, 0.692) solid 2px;
+    border-bottom: rgba(255, 255, 0, 0.692) solid 1px;
 }
 
 #trip_post_form input::placeholder {
@@ -302,7 +301,7 @@ h1 {
 }
 
 input[type=text]:focus {
-    background-color: var(--backgroundColor);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 
@@ -314,7 +313,8 @@ input[type=text]:focus {
     top: 150px;
     left: calc(100% - 21vw);
     border-radius: 10px;
-    border: 2px solid var(--mainsystemcolor);
+    border-bottom: 2px solid var(--mainsystemcolor);
+    border-bottom: 2px solid var(--mainsystemcolor);
 }
 
 #actual_trip h1 {
@@ -484,7 +484,7 @@ hr {
     padding: 20px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .trip_details img {
@@ -493,13 +493,14 @@ hr {
     border-radius: 10px;
     border: 1px rgba(161, 161, 161, 0.145) solid;
     box-shadow: var(--shadowColor);
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .comment_trip_text>div {
     padding: 20px;
     background-color: rgba(255, 255, 0, 0.226);
     margin: 10px;
+    margin-top: 80px;
     border-radius: 10px;
 }
 
@@ -582,7 +583,17 @@ hr {
 }
 
 
-/* [input = file] styling */
+/* input[type="file"] {
+    display: none;
+} */
+
+
+/* label {
+    color: white;
+    height60px;
+    width: 250px;
+    background-color: #f5af09;
+} */
 
 
 /*site responsiveness */

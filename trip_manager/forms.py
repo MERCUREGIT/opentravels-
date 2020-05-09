@@ -23,7 +23,7 @@ class CreateTrip(forms.ModelForm):
     
     class Meta:
         model=models.trip_data
-        fields=['origin','destination','Date','Time','description','agency','thumb','is_public' ]
+        fields=['origin','destination','Date','Time','description','agency','is_public' ]
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>trips</title>
     <link rel="stylesheet" href="{% static 'trip_manager/style.css' %}">
+    <script src="{% static 'trip_manager/main.js' %}"></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/4deffcab94.js" crossorigin="anonymous"></script>
 </head>
@@ -29,7 +30,7 @@
         </ul>
     </nav>
     <div id="display_trip_form">
-        <button onclick="display_form()" ondblclick="display_form_hide()" id="display_trip"> <i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>Display Trip</button>
+        <button onclick="display_form()"  id="display_trip"> <i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>Display Trip</button>
     </div>
     {% block trip_cards %} {% endblock %} {% block trip_post_form %} {% endblock %}{% block actual_trip %}{% endblock %} {% block trip_details %}{% endblock %}
     <!-- footer -->
@@ -39,7 +40,7 @@
 
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script src="{%static 'trip_manager/main.js'%}"></script>
+    
 
     <!-- implement the trip seach functionality -->
     <script>
@@ -48,20 +49,24 @@
         });
 
 
+        //dispaly or hidepost form
+
         function display_form() {
 
-            form_button = document.getElementById('display_trip');
-            var click = true;
-            if (click == true) {
+            form_display = document.getElementById('trip_post_form');
+            
+            if (form_display.style.display == "none") {
                 form = document.getElementById('trip_post_form').style.display = "block";
-                click = false;
+                
+            }
+            else
+            {
+                form = document.getElementById('trip_post_form').style.display = "none";
             }
         }
+        
 
-        function display_form_hide() {
-            form = document.getElementById('trip_post_form').style.display = "none";
-
-        }
+        
     </script>
 
 </body>
