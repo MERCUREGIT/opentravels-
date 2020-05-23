@@ -6,7 +6,7 @@
 
         <h1>joint trips</h1>
 
-        {% for trip_joint in trip_joint_by_user_all %}
+        {% for trip_joint in trip_joint_by_user_all %} {% debug %}
         <div>
             <span>origin  : {{trip_joint.joinin_user}}</span><br>
             <span>Destination  :{{trip_joint.trip_data_id}}</span>
