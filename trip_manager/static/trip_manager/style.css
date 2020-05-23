@@ -310,12 +310,12 @@ input[type=text]:focus {
 /* selected trip */
 
 #actual_trip {
-    width: 22vw;
+    width: 20vw;
     position: relative;
     top: 150px;
     left: calc(100% - 21vw);
     border-radius: 10px;
-    border-bottom: 2px solid var(--mainsystemcolor);
+    padding: 20px;
     border-bottom: 2px solid var(--mainsystemcolor);
 }
 
@@ -584,16 +584,8 @@ hr {
     transform: rotate(360);
 }
 
-
-/* 
-input[type="file"] {
-    display: none;
-} */
-
-input[type="checkbox"] {
-    opacity: 0;
-    display: none;
-    position: absolute;
+input[type="date"] {
+    background-color: yellow;
 }
 
 input[type="checkbox"]:active label {
@@ -601,14 +593,19 @@ input[type="checkbox"]:active label {
 }
 
 label {
-    background-color: var(--mainsystemcolor);
+    background-color: var(--mainsystemcolorblack);
     padding: 10px;
     text-align: center;
     float: left;
-    color: blue;
+    color: white;
     width: 80px;
     margin: 5px;
     border-radius: 10px;
+}
+
+input[type="file"] {
+    /* display: none; */
+    opacity: 0;
 }
 
 

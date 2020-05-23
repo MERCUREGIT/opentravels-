@@ -33,7 +33,7 @@ class CreateTrip(forms.ModelForm):
         self.fields['agency'].widget =  forms.TextInput(attrs={'placeholder':'Trip agency'})
         self.fields['description'].widget =  forms.TextInput(attrs={'placeholder':'Trip description'})
         self.fields['destination'].widget =  forms.TextInput(attrs={'placeholder':'Trip destination'})
-        self.fields['Date'].widget =  forms.DateInput(attrs={'placeholder':'Trip date'})
+        # self.fields['Date'].widget =  forms.DateInput(attrs={'placeholder':'Trip date'})
         self.fields['Time'].widget =  forms.TimeInput(attrs={'placeholder':'Trip Time'})
         self.fields['Time'].widget = TimeInput()
         

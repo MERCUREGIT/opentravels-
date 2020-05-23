@@ -16,9 +16,6 @@ def trip_details_page(request, abc):
     trip= trip_data.objects.get(id=abc)
     trips_list = trip_data.objects.all().order_by('Date')
     comment_trip = Trip_Comments.objects.all().order_by('comment_date_time')
-    
-  
- 
     return render(request,'./trip_manager/trip_details.html',{"comments":comment_trip,'trips':trips_list,'trip_detail':trip})
 
 # @login_required(login_url="/profile/")
@@ -28,8 +25,8 @@ def trip_page(request):
     
     form=forms.CreateTrip()
     comment_trip = Trip_Comments.objects.all().order_by('comment_date_time')
-    trip_joint_by_user_all=  join_trip.objects.filter(joinin_user=request.user) 
-    # print(trip_joint_by_user_all)
+    trip_joint=  join_trip.objects.filter(joinin_user=request.user) 
+    print(trip_joint)
     if request.method == 'POST':
         form=forms.CreateTrip(request.POST, request.FILES)
         if form.is_valid():
@@ -38,8 +35,7 @@ def trip_page(request):
             instance.save()
             instance.id
             trips = trip_data.objects.all().order_by('Date')
-            
-            return redirect('trip_manager/trip_page.html', {"comments":comment_trip,'form':form,'trips':trips, 'trip_joint_by_user_all':join_trip.objects.all()})
+            return redirect('trip_manager/trip_page.html', {"comments":comment_trip,'form':form,'trips':trips, 'trip_joint':trip_joint})
         
     else:
         pass

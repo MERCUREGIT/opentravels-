@@ -16,6 +16,7 @@ class trip_data(models.Model):
     author = models.ForeignKey(User,default='anonymous',on_delete=models.CASCADE)
     thumb=models.ImageField( default='default.png', blank=True)
     is_public = models.BooleanField(_("Pushish Trip"), default=True)
+    group_exist =  models.BooleanField(default=False)
     # add author
     
     def __str__(self):

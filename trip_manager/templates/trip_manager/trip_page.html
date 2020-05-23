@@ -3,6 +3,28 @@
 <!-- includind trip cards -->
 {% block trip_cards %} {%include './trip_cards.html'%} {% endblock %}
 <!-- including for used to post trip -->
+
+<div>
+
+    <h1>joint trips</h1>
+
+
+    <div>
+        {% for trip_joint in trip_joint %}
+        <span>origin  : {{ trip_joint.joinin_user }}</span>
+        <span>Destination  :{{trip_joint.trip_data_id}}</span>
+        <!-- <p>{{trip.description }}</p>
+        <span>origin  : {{trip.origin}}</span><br>
+        <span>Destination  :{{trip.destination}}</span>
+        <p>{{trip.description }}</p> -->
+        {%endfor%}
+
+        <span><i class="fa fa-users" aria-hidden="true"></i>{{trip.author }}</span>
+    </div>
+
+
+</div>
+
 {% block trip_post_form %}{%include './trip_post_form.html'%} {% endblock %}
 
 <!-- including trip asside -->
