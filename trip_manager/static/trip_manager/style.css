@@ -593,19 +593,40 @@ input[type="checkbox"]:active label {
 }
 
 label {
-    background-color: var(--mainsystemcolorblack);
+    background-color: black;
     padding: 10px;
     text-align: center;
     float: left;
     color: white;
-    width: 80px;
-    margin: 5px;
-    border-radius: 10px;
+    width: 100%;
+    height: 100%;
 }
 
 input[type="file"] {
     /* display: none; */
-    opacity: 0;
+    opacity: 0.5;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#trip_image_file,
+#trip_video_file,
+#trip_audio_file {
+    position: relative;
+    width: 80px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 11px;
+    float: right;
+}
+
+#form-files {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 

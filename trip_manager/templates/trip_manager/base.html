@@ -30,7 +30,7 @@
         </ul>
     </nav>
     <div id="display_trip_form">
-        <button onclick="display_form()"  id="display_trip"> <i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>Display Trip</button>
+        <button onclick="display_form()" id="display_trip"> <i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>Display Trip</button>
     </div>
     {% block trip_cards %} {% endblock %} {% block trip_post_form %} {% endblock %}{% block actual_trip %}{% endblock %} {% block trip_details %}{% endblock %}
     <!-- footer -->
@@ -40,7 +40,7 @@
 
     <!-- scripts -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    
+
 
     <!-- implement the trip seach functionality -->
     <script>
@@ -54,19 +54,14 @@
         function display_form() {
 
             form_display = document.getElementById('trip_post_form');
-            
-            if (form_display.style.display == "none") {
-                form = document.getElementById('trip_post_form').style.display = "block";
-                
-            }
-            else
-            {
+
+            if (form_display.style.display == "block") {
                 form = document.getElementById('trip_post_form').style.display = "none";
+
+            } else {
+                form = document.getElementById('trip_post_form').style.display = "block";
             }
         }
-        
-
-        
     </script>
 
 </body>

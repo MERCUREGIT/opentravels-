@@ -14,7 +14,7 @@ class TimeInput(forms.TimeInput):
 class CreateTrip(forms.ModelForm):
     origin = forms.CharField(widget=forms.TextInput, label='')
     destination = forms.CharField(widget=forms.TextInput, label='')
-    agency = forms.CharField(widget=forms.TextInput, label='')
+    agency = forms.CharField(widget=forms.TextInput, label='agency')
     description = forms.CharField(widget=forms.Textarea, label='')
     Date = forms.DateField(widget=forms.DateInput, label='')
     Time = forms.TimeField(widget=forms.TimeInput, label='')
@@ -23,7 +23,7 @@ class CreateTrip(forms.ModelForm):
     
     class Meta:
         model=models.trip_data
-        fields=['origin','destination','Date','Time','description','agency','is_public' ]
+        fields=['origin','destination','Date','Time','agency','description','is_public' ]
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -31,9 +31,8 @@ class CreateTrip(forms.ModelForm):
         self.fields['Date'].widget = DateInput()
         self.fields['origin'].widget =  forms.TextInput(attrs={'placeholder':'Trip origin'})
         self.fields['agency'].widget =  forms.TextInput(attrs={'placeholder':'Trip agency'})
-        self.fields['description'].widget =  forms.TextInput(attrs={'placeholder':'Trip description'})
+        self.fields['description'].widget =  forms.Textarea(attrs={'placeholder':'Trip description'})
         self.fields['destination'].widget =  forms.TextInput(attrs={'placeholder':'Trip destination'})
-        # self.fields['Date'].widget =  forms.DateInput(attrs={'placeholder':'Trip date'})
         self.fields['Time'].widget =  forms.TimeInput(attrs={'placeholder':'Trip Time'})
         self.fields['Time'].widget = TimeInput()
         

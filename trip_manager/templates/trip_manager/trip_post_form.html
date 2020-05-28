@@ -6,25 +6,23 @@
 
         <form id="post_form" action="{% url 'trip_manager:trip_page' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %} {{form}}
-            <!-- <div id="file">
-                <input type="file" accept="image/*" class="cu
-                
-                stom-file-input" size="60" id="">
-            </div> -->
-            <!-- <input type="file" accept="image/*" class="custom-file-input" size="60" id=""> -->
-            <div id="trip_image_file">
-                <label for="trip_image_post_file"><i class="fa fa-file-image-o fa-2x" aria-hidden="true"></i></label>
-                <input type="file" id="trip_image_post_file" accept="image/png, image/jgp" />
-            </div>
-            <div id="trip_video_file">
-                <label for="trip_video_post_file"><i class="fa fa-file-video-o fa-2x" aria-hidden="true"></i></label>
-                <input type="file" accept="video/*" />
-            </div>
-            <div id="trip_audio_file">
-                <label for="trip_audio_post_file"><i class="fa fa-file-audio-o fa-2x" aria-hidden="true"></i></label>
-                <input type="file" accept="audio/*" />
+
+            <div id="form-files">
+                <div id="trip_image_file">
+                    <label for="trip_image_post_file"><i class="fa fa-file-image-o fa-2x" aria-hidden="true"></i></label>
+                    <input type="file" id="trip_image_post_file" accept="image/png, image/jgp" />
+                </div>
+                <div id="trip_video_file">
+                    <label for="trip_video_post_file"><i class="fa fa-file-video-o fa-2x" aria-hidden="true"></i></label>
+                    <input type="file" accept="video/*" />
+                </div>
+                <div id="trip_audio_file">
+                    <label for="trip_audio_post_file"><i class="fa fa-file-audio-o fa-2x" aria-hidden="true"></i></label>
+                    <input type="file" accept="audio/*" />
+                </div>
             </div>
             <input type="submit" id="submit" name="" value="Create Trip">
+
         </form>
 
     </section>
